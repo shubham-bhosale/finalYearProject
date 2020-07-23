@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">EV Buddy</string>
+    <string name="title_activity_near_by_charging_stations">Map</string>
+    <string-array name="selectConnectorType">
+        <item>AC_Type1</item>
+        <item>AC_Type2</item>
+        <item>AC_Type3</item>
+        <item>DC_Type1</item>
+        <item>DC_Type2</item>
+        <item>DC_Type3</item>
+    </string-array>
+</resources>

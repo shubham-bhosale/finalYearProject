@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "363263999377",
+    "firebase_url": "https://ev-buddy-1604032.firebaseio.com",
+    "project_id": "ev-buddy-1604032",
+    "storage_bucket": "ev-buddy-1604032.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:363263999377:android:e82998d8381a014364ee30",
+        "android_client_info": {
+          "package_name": "com.sart.evbuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "363263999377-3e1185m2tfuneejtp4q4odaic6dfa2j9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sart.evbuddy",
+            "certificate_hash": "ea66aaec26043cd5fdfd626f47791b486abf59c1"
+          }
+        },
+        {
+          "client_id": "363263999377-i64sslm7gnt10f3e6hthg7t5c6oji0pk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI8p3NndBwROU7PzAKBnaay3QS8Hyv6rk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "363263999377-i64sslm7gnt10f3e6hthg7t5c6oji0pk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

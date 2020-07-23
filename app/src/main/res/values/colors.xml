@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7438F2</color>
+    <color name="colorPrimaryDark">#7438F2</color>
+    <!--<color name="colorPrimaryDark">#4E2D94</color>-->
+    <color name="colorAccent">#F99DF0</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="ownerbgclr">#F6F5F5</color>
+    <color name="colortxtfield">#F5F5F5</color>
+    <color name="border">#B3B3B3</color>
+</resources>
