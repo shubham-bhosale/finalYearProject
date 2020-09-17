@@ -47,7 +47,7 @@ public class custRegister extends AppCompatActivity
             type = 2;
         }
 
-        Toast.makeText(custRegister.this,usertype+" "+String.valueOf(type),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(custRegister.this,usertype+" "+String.valueOf(type),Toast.LENGTH_SHORT).show();
 
         firebaseAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
@@ -124,7 +124,10 @@ public class custRegister extends AppCompatActivity
         if(type == 2)
         {
             addOwnerInfo();
-            startActivity(new Intent(custRegister.this, CSDetails.class));
+            Intent i = new Intent(custRegister.this, CSDetails.class);
+            String valueFromRegistration = "valueFromRegistration";
+            i.putExtra("value",valueFromRegistration);
+            startActivity(i);
             finish();
         }
         else if(type == 1)

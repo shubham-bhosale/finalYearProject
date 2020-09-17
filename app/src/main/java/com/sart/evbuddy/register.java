@@ -45,8 +45,6 @@ public class register extends AppCompatActivity
                 }
                 else
                 {
-                    //Toast.makeText(register.this,rb.getText(),Toast.LENGTH_SHORT).show();
-                    //startActivity(new Intent(getApplicationContext(),custRegister.class));
                     Intent i = new Intent(register.this,custRegister.class);
                     i.putExtra("usertype",rb.getText());
                     startActivity(i);

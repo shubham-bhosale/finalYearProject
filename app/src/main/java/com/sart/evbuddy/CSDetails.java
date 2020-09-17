@@ -26,6 +26,7 @@ public class CSDetails extends AppCompatActivity
     DatabaseReference reference;
 
     String tableName;
+    String value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,12 +34,16 @@ public class CSDetails extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_csdetails);
 
+        Intent i = getIntent();
+        value = i.getStringExtra("value");
+
         CSName = findViewById(R.id.et_csname);
         latitude = findViewById(R.id.et_latitude);
         longitude = findViewById(R.id.et_longitude);
         ok = findViewById(R.id.okbtn);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
+
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
@@ -68,8 +73,18 @@ public class CSDetails extends AppCompatActivity
 
                         reference.updateChildren(updateInfo);
                         Toast.makeText(CSDetails.this,"CS Info Updated Successfully.",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(CSDetails.this, OwnerDash.class));
-                        finish();
+
+                        if(value.equals("valueFromOwnerDash"))
+                        {
+                            startActivity(new Intent(CSDetails.this, OwnerDash.class));
+                            finish();
+                        }
+                        else if(value.equals("valueFromRegistration"))
+                        {
+                            FirebaseAuth.getInstance().signOut();
+                            startActivity(new Intent(CSDetails.this,MainActivity.class));
+                            finish();
+                        }
                     }
                     else
                     {
@@ -82,4 +97,19 @@ public class CSDetails extends AppCompatActivity
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(value.equals("valueFromOwnerDash"))
+        {
+            startActivity(new Intent(CSDetails.this, OwnerDash.class));
+            finish();
+        }
+        else if(value.equals("valueFromRegistration"))
+        {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(CSDetails.this,MainActivity.class));
+            finish();
+        }
+    }
 }

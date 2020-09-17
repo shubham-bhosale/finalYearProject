@@ -1,10 +1,12 @@
 package com.sart.evbuddy;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -116,28 +118,38 @@ public class OwnerDash extends AppCompatActivity
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem)
                     {
-                        Toast.makeText(OwnerDash.this,menuItem.getTitle(),Toast.LENGTH_LONG).show();
-                        /*if(menuItem.getTitle().toString().trim().equals("Update CS Details"))
-                        {
-                            startActivity(new Intent(OwnerDash.this,CSDetails.class));
-                            finish();
-                        }
-                        else if(menuItem.getTitle().toString().trim().equals("Logout"))
-                        {
-                            FirebaseAuth.getInstance().signOut();
-                            startActivity(new Intent(OwnerDash.this,MainActivity.class));
-                            finish();
-                        }*/
                         if(menuItem.getItemId() == R.id.item_cs_details)
                         {
-                            startActivity(new Intent(OwnerDash.this,CSDetails.class));
+                            String valueFromOwnerDash = "valueFromOwnerDash";
+                            Intent i = new Intent(OwnerDash.this,CSDetails.class);
+                            i.putExtra("value",valueFromOwnerDash);
+                            startActivity(i);
                             finish();
                         }
                         else if(menuItem.getItemId() == R.id.item_logout)
                         {
-                            FirebaseAuth.getInstance().signOut();
-                            startActivity(new Intent(OwnerDash.this,MainActivity.class));
-                            finish();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(OwnerDash.this);
+                            builder.setTitle("Exit");
+                            builder.setMessage("Do you really want to logout?");
+                            builder.setCancelable(false);
+
+                            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    FirebaseAuth.getInstance().signOut();
+                                    startActivity(new Intent(OwnerDash.this,MainActivity.class));
+                                    finish();
+                                }
+                            });
+
+                            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+
+                            builder.create().show();
                         }
                         return true;
                     }
@@ -256,9 +268,6 @@ public class OwnerDash extends AppCompatActivity
                 int total_avl_slots = avlAC1+avlAC2+avlAC3+avlDC1+avlDC2+avlDC3;//sum of all types of avl slots
                 int total_bsy_slots = bsyAC1+bsyAC2+bsyAC3+bsyDC1+bsyDC2+bsyDC3;//sum of all types of bsy slots
 
-//                tv_total_slots.setText(String.valueOf(Total_slots));
-//                tv_available_slots.setText(String.valueOf(total_avl_slots));
-//                tv_busy_slots.setText(String.valueOf(total_bsy_slots));
 
                 Map<String,Object> updateInfo2 = new HashMap<>();
                 updateInfo2.put("/Owners/"+tableName+"/totalAvl",String.valueOf(total_avl_slots));
