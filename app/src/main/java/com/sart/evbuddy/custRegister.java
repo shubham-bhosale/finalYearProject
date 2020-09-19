@@ -90,27 +90,33 @@ public class custRegister extends AppCompatActivity
         }
         else
         {
+            if(phone.getText().toString().length() != 10)
+            {
+                Toast.makeText(custRegister.this,"Please enter a valid phone number.",Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                progressDialog.setMessage("Registering User Statement..");
+                progressDialog.show();
 
-            progressDialog.setMessage("Registering User Statement..");
-            progressDialog.show();
-
-            //firebase authentication
-            firebaseAuth.createUserWithEmailAndPassword(email,pass)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task)
-                        {
-                            if(task.isSuccessful())
+                //firebase authentication
+                firebaseAuth.createUserWithEmailAndPassword(email,pass)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task)
                             {
-                                onAuthSuccess(task.getResult().getUser());
+                                if(task.isSuccessful())
+                                {
+                                    onAuthSuccess(task.getResult().getUser());
+                                }
+                                else
+                                {
+                                    Toast.makeText(custRegister.this,"Could not registered. Try again later.",Toast.LENGTH_SHORT).show();
+                                }
+                                progressDialog.dismiss();
                             }
-                            else
-                            {
-                                Toast.makeText(custRegister.this,"Could not registered. Try again later.",Toast.LENGTH_SHORT).show();
-                            }
-                            progressDialog.dismiss();
-                        }
-                    });
+                        });
+            }
         }
 
     }
