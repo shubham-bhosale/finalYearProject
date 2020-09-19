@@ -47,7 +47,7 @@ public class Csdetails2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Owner owner2 = (Owner) getIntent().getSerializableExtra("OwnerData");
-                Toast.makeText(Csdetails2.this, owner2.phone, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Csdetails2.this, owner2.phone, Toast.LENGTH_SHORT).show();
                 Intent callIntent = new Intent(Intent.ACTION_DIAL);
                 callIntent.setData(Uri.parse("tel:" + owner2.phone));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
