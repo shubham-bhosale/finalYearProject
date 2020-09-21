@@ -189,8 +189,9 @@ public class custRegister extends AppCompatActivity
         owner.setTotal_DC_Type3("0");
 
 
-        owner.setLatitude("Null");
-        owner.setLongitude("Null");
+        //lat lan must be set to 0.000000 otherwise while fetching location co-ordinates app will be crashed
+        owner.setLatitude("0.000000");
+        owner.setLongitude("0.000000");
 
         owner.setCSName("Not Available");
         owner.setTotalAvl("0");
