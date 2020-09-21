@@ -35,6 +35,7 @@ public class CustomerHome extends AppCompatActivity {
         c1 = findViewById(R.id.c1);
         c2 = findViewById(R.id.c2);
         c3 = findViewById(R.id.c3);
+        c4 = findViewById(R.id.c4);
         c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +54,13 @@ public class CustomerHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(CustomerHome.this,"This feature is currently not available.",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        c4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CustomerHome.this,aboutUs.class));
             }
         });
 
